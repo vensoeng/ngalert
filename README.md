@@ -26,11 +26,11 @@ NG Alert is a library created to facilitate the creation of Popup Messages or No
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="dist/ngalert.css">
+  <link rel="stylesheet" href="https://vensoeng.vercel.app/ngalert@0.1.0/dic/ngalert.css">
 </head>
 <body>
   <button onclick="NGAlert.success('Your file was saved!')">Show Alert</button>
-  <script src="dist/ngalert.js"></script>
+  <script src="https://vensoeng.vercel.app/ngalert@0.1.0/dic/ngalert.js"></script>
 </body>
 </html>
 ```
@@ -42,10 +42,10 @@ NG Alert is a library created to facilitate the creation of Popup Messages or No
 ### Shorthand methods
 
 ```js
-NGAlert.success('Your changes have been saved on NG Alert.');
-NGAlert.error('Something went wrong. Please try NG Alert again.');
-NGAlert.warning('Your session is about to expire Contact NG Alert for get APIKEY.');
-NGAlert.info('A new version of NG Alert is available.');
+NGAlert.success('You have successfully used NG Alert! (អ្នកបានប្រើប្រាស NG Alert ដោយជោគជ័យ)');
+NGAlert.error('There was a problem using NG Alert, please try again! (មានបញ្ហាការប្រើប្រាស NG Alert សូមព្យាយាមម្ដងទៀត)');
+NGAlert.warning('The version of NG Alert has changed, please use the new version! (កំណែរនៃ NG Alert បានផ្លាស់ប្ដូរ សូមប្រើប្រាសកំណែថ្មី)');
+NGAlert.info('You have used NG Alert in version 0.1.0! (អ្នកបានប្រើប្រាស NG Alert ក្នុងកំណែ ០.១.០)');
 ```
 
 ### With custom title and options
@@ -91,16 +91,17 @@ NGAlert.dismiss();
 Set defaults once at app startup:
 
 ```js
-NGAlert.init({
+ngAlert.init({
   duration: 4000,
   closeOnOverlay: false,
   labels: {
-    success: 'Done',
-    error: 'Oops',
-    warning: 'Heads Up',
-    info: 'FYI'
+    success: 'បានជោគជ័យ',
+    error: 'មានបញ្ហាបានកើតឡើង',
+    warning: 'ការព្រមាន',
+    info: 'ព័ត៌មាន'
   }
 });
+ngAlert.success('សូមស្វាគមន៍មកកាន់ NGAlert!');
 ```
 
 ---

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://vensoeng.vercel.app/ngalert@0.1.0/dic/ngalert.css">
+
+    <script src="https://vensoeng.vercel.app/ngalert@0.1.0/dic/ngalert.js"></script>
+    <script>
+        NGAlert.init({
+            duration: 4000,
+            closeOnOverlay: false,
+            labels: {
+                success: 'បានជោគជ័យ',
+                error: 'មានបញ្ហាបានកើតឡើង',
+                warning: 'ការព្រមាន',
+                info: 'ព័ត៌មាន'
+            }
+        });
+        ngAlert.success('សូមស្វាគមន៍មកកាន់ NGAlert!');
+    </script>
+</body>
+</html>
