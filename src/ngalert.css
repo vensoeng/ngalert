@@ -1,0 +1,235 @@
+/* NGAlert v0.1.0 - Lightweight Global Alert Library
+ * https://github.com/YOUR_USERNAME/ngalert
+ * MIT License
+ */
+
+/* ── Design tokens ─────────────────────────────────────── */
+:root {
+  --nga-z-index:       9999;
+  --nga-overlay:       rgba(13, 17, 23, 0.36);
+  --nga-panel-bg:      #ffffff;
+  --nga-panel-text:    #1f2937;
+  --nga-panel-subtext: #4b5563;
+  --nga-shadow:        0 24px 56px rgba(2, 8, 23, 0.22);
+  --nga-radius:        16px;
+  --nga-success:       #10b981;
+  --nga-error:         #ef4444;
+  --nga-warning:       #f59e0b;
+  --nga-info:          #0ea5e9;
+  --nga-bg-success:    #eefaf6;
+  --nga-bg-error:      #ffeded;
+  --nga-bg-warning:    #fff9ed;
+  --nga-bg-info:       #e8f6ff;
+}
+
+/* ── Root overlay wrapper ──────────────────────────────── */
+.nga-root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--nga-z-index);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.24s ease, visibility 0.24s ease;
+}
+
+.nga-root.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ── Backdrop ──────────────────────────────────────────── */
+.nga-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--nga-overlay);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.24s ease;
+}
+
+.nga-root.is-visible .nga-overlay {
+  opacity: 1;
+}
+
+/* ── Alert panel ───────────────────────────────────────── */
+.nga-panel {
+  position: relative;
+  width: min(540px, calc(100vw - 28px));
+  background: var(--nga-panel-bg);
+  border-radius: var(--nga-radius);
+  box-shadow: var(--nga-shadow);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  transform: translateY(18px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 0.28s ease, top 0.3s ease;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  top: -100%;
+  
+}
+
+.nga-root.is-visible .nga-panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  top: -20%;
+}
+
+/* ── Content row ───────────────────────────────────────── */
+.nga-content {
+  display: flex;
+  align-items: flex-start;
+  padding: 18px 18px 14px;
+  gap: 14px;
+}
+
+.nga-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Icon ──────────────────────────────────────────────── */
+.nga-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.nga-icon svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+  fill: #ffffff;
+}
+
+/* ── Text ──────────────────────────────────────────────── */
+.nga-title {
+  margin: 0;
+  font-size: 1.03rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--nga-panel-text);
+}
+
+.nga-message {
+  margin: 5px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--nga-panel-subtext);
+  text-align: initial;
+}
+
+/* ── Close button ──────────────────────────────────────── */
+.nga-close {
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  color: #6b7280;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.nga-close:hover {
+  background-color: rgba(107, 114, 128, 0.1);
+  color: #111827;
+  transform: scale(1.08);
+}
+
+.nga-close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* ── Progress bar ──────────────────────────────────────── */
+.nga-progress {
+  height: 4px;
+  width: 100%;
+  transform-origin: left center;
+  animation: ngaProgress linear forwards;
+}
+
+/* ── Type variants ─────────────────────────────────────── */
+.nga-panel.type-success .nga-icon,
+.nga-panel.type-success .nga-progress {
+  background: var(--nga-success);
+}
+
+.nga-panel.type-success {
+  background: var(--nga-bg-success);
+}
+
+.nga-panel.type-error .nga-icon,
+.nga-panel.type-error .nga-progress {
+  background: var(--nga-error);
+}
+
+.nga-panel.type-error {
+  background: var(--nga-bg-error);
+}
+
+.nga-panel.type-warning .nga-icon,
+.nga-panel.type-warning .nga-progress {
+  background: var(--nga-warning);
+}
+
+.nga-panel.type-warning {
+  background: var(--nga-bg-warning);
+}
+
+.nga-panel.type-info .nga-icon,
+.nga-panel.type-info .nga-progress {
+  background: var(--nga-info);
+}
+
+.nga-panel.type-info {
+  background: var(--nga-bg-info);
+}
+
+/* ── Progress animation ────────────────────────────────── */
+@keyframes ngaProgress {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* ── Mobile ────────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .nga-content {
+    padding: 14px 14px 12px;
+    gap: 10px;
+  }
+
+  .nga-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nga-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .nga-title {
+    font-size: 0.98rem;
+  }
+
+  .nga-message {
+    font-size: 0.88rem;
+  }
+}

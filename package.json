@@ -1,0 +1,31 @@
+{
+  "name": "ngalert",
+  "version": "0.1.0",
+  "description": "A lightweight, accessible, zero-dependency global alert dialog library",
+  "main": "dist/ngalert.js",
+  "style": "dist/ngalert.css",
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "keywords": [
+    "alert",
+    "dialog",
+    "modal",
+    "notification",
+    "accessible",
+    "zero-dependency",
+    "vanilla-js",
+    "ui"
+  ],
+  "author": "vensoeng",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vensoeng/ngalert.git"
+  },
+  "homepage": "https://github.com/vensoeng/ngalert",
+  "bugs": {
+    "url": "https://github.com/vensoeng/ngalert/issues"
+  }
+}
