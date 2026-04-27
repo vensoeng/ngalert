@@ -16,8 +16,8 @@ NG Alert is a library created to facilitate the creation of Popup Messages or No
 ### CDN (easiest)
 
 ```html
-<link rel="stylesheet" href="https://vensoeng.vercel.app/ngalert@0.1.0/dic/ngalert.css">
-<script src="https://vensoeng.vercel.app/ngalert@0.1.0/dic/ngalert.js"></script>
+<link rel="stylesheet" href="https://vensoeng.vercel.app/ngalert@0.1.0/dist/ngalert.css">
+<script src="https://vensoeng.vercel.app/ngalert@0.1.0/dist/ngalert.js"></script>
 ```
 
 ## Quick Start
@@ -26,11 +26,11 @@ NG Alert is a library created to facilitate the creation of Popup Messages or No
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://vensoeng.vercel.app/ngalert@0.1.0/dic/ngalert.css">
+  <link rel="stylesheet" href="https://vensoeng.vercel.app/ngalert@0.1.0/dist/ngalert.css">
 </head>
 <body>
   <button onclick="NGAlert.success('Your file was saved!')">Show Alert</button>
-  <script src="https://vensoeng.vercel.app/ngalert@0.1.0/dic/ngalert.js"></script>
+  <script src="https://vensoeng.vercel.app/ngalert@0.1.0/dist/ngalert.js"></script>
 </body>
 </html>
 ```
